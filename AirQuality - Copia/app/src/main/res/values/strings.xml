@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Air Quality</string>
+    <string name="client_id">1029215587069-335ioli2gcp5v3uvgmil3e115acht4hj.apps.googleusercontent.com</string>
+    <string name="welcome">Welcome!</string>
+    <string name="air_quality">AIR QUALITY</string>
+    <string name="welcome_text">"Best place to check the Air Quality Index "</string>
+    <string name="welcome_text2">Start with sign up or sign in</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="hello">Hello!</string>
+    <string name="hey">Hey!</string>
+    <string name="hello_text">Create a new account to continue</string>
+    <string name="hey_text">Sign in to continue</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="or">OR</string>
+    <string name="forgot_password2">FORGOT PASSWORD</string>
+    <string name="reset_password">RESET PASSWORD</string>
+    <string name="back">BACK</string>
+    <string name="forgot_password_text">Provide your account\'s email for which you\nwant to reset your password</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="google_sign_up">Sign up with Google</string>
+    <string name="google_sign_in">Sign in with Google</string>
+    <string name="pm10">PM10</string>
+    <string name="pm2_5">PM2.5</string>
+    <string name="so2">SO2</string>
+    <string name="o3">O3</string>
+    <string name="no2">NO2</string>
+    <string name="co">CO</string>
+    <string name="aqi">AQI :</string>
+</resources>
