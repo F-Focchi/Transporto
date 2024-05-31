@@ -63,51 +63,51 @@ public class AirQualityData {
 
         public static class Components{
             @SerializedName("co")
-            private float co;
+            private String co;
             @SerializedName("no")
-            private float no;
+            private String no;
             @SerializedName("no2")
-            private float no2;
+            private String no2;
             @SerializedName("o3")
-            private float o3;
+            private String o3;
             @SerializedName("so2")
-            private float so2;
+            private String so2;
             @SerializedName("pm2_5")
-            private float pm2_5;
+            private String pm2_5;
             @SerializedName("pm10")
-            private float pm10;
+            private String pm10;
             @SerializedName("nh3")
-            private float nh3;
+            private String nh3;
 
-            public float getCo() {
+            public String getCo() {
                 return co;
             }
 
-            public float getNo() {
+            public String getNo() {
                 return no;
             }
 
-            public float getNo2() {
+            public String getNo2() {
                 return no2;
             }
 
-            public float getO3() {
+            public String getO3() {
                 return o3;
             }
 
-            public float getSo2() {
+            public String getSo2() {
                 return so2;
             }
 
-            public float getPm2_5() {
+            public String getPm2_5() {
                 return pm2_5;
             }
 
-            public float getPm10() {
+            public String getPm10() {
                 return pm10;
             }
 
-            public float getNh3() {
+            public String getNh3() {
                 return nh3;
             }
         }

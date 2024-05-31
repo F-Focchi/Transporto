@@ -18,12 +18,6 @@
         android:theme="@style/Theme.AirQuality"
         tools:targetApi="31">
         <activity
-            android:name=".ui.welcome.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.welcome.SignInActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.main.MainActivity"
             android:exported="true" />
 

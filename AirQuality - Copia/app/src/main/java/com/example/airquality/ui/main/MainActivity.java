@@ -9,6 +9,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.airquality.util.Support;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import com.example.airquality.R;

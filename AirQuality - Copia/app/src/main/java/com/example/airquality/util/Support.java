@@ -10,23 +10,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class Support {
-
- public static String setCityToString (double lat, double lon , Context context){
-     Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-     try {
-         List<Address> addresses = geocoder.getFromLocation(lat, lon, 1);
-         if (addresses != null && !addresses.isEmpty()) {
-             String cityName = addresses.get(0).getLocality();
-             Global.setCity(cityName);
-             Log.d("City", cityName);
-             return cityName;
-         }
-     } catch (IOException e) {
-         e.printStackTrace();
-     }
-     return null;
- }
-
     public static String setDescriptionToString(int descriptionValue) {
         String descrizione = "";
         switch(descriptionValue) {
@@ -50,5 +33,29 @@ public class Support {
                 break;
         }
         return descrizione;
+    }
+    public static String setAqiToString(int aqiValue) {
+        String aqi = "";
+        switch(aqiValue) {
+            case (1):
+                aqi = "1";
+                break;
+            case (2):
+                aqi = "2";
+                break;
+            case (3):
+                aqi = "3";
+                break;
+            case (4):
+                aqi = "4";
+                break;
+            case (5):
+                aqi = "5";
+                break;
+            default:
+                aqi = "6?";
+                break;
+        }
+        return aqi;
     }
 }

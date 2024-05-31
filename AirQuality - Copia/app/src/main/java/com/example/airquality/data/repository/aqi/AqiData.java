@@ -9,8 +9,8 @@ public class AqiData {
     private static AqiInfo info;
     public static void setAqiData(AirQualityData airQualityData) {
         AqiInfo setInfo = new AqiInfo();
-       // setInfo.setCity(Support.setCityToString(airQualityData.getCoord().getLat(), airQualityData.getCoord().getLon(),getApplicationContext()));
-        setInfo.setAqi(airQualityData.getList().get(0).getMain().getAqi());
+        setInfo.setCity(Global.getCity());
+        setInfo.setAqi(Support.setAqiToString(airQualityData.getList().get(0).getMain().getAqi()));
         setInfo.setDescription(Support.setDescriptionToString(airQualityData.getList().get(0).getMain().getAqi()));
         setInfo.setCo(airQualityData.getList().get(0).getComponents().getCo());
         setInfo.setNo2(airQualityData.getList().get(0).getComponents().getNo2());
