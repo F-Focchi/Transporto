@@ -1,5 +1,5 @@
 package com.example.airquality.ui.welcome;
-/*
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -14,8 +14,8 @@ public class UserViewModel extends ViewModel {
 
     private final IUserRepository userRepository;
     private MutableLiveData<Result> userMutableLiveData;
-    private MutableLiveData<Result> userFavoriteNewsMutableLiveData;
-    private MutableLiveData<Result> userPreferencesMutableLiveData;
+    //private MutableLiveData<Result> userFavoriteNewsMutableLiveData;
+    //private MutableLiveData<Result> userPreferencesMutableLiveData;
     private boolean authenticationError;
 
     public UserViewModel(IUserRepository userRepository) {
@@ -37,7 +37,7 @@ public class UserViewModel extends ViewModel {
         }
         return userMutableLiveData;
     }
-
+/*
     public MutableLiveData<Result> getUserFavoriteNewsMutableLiveData(String idToken) {
         if (userFavoriteNewsMutableLiveData == null) {
             getUserFavoriteNews(idToken);
@@ -58,23 +58,27 @@ public class UserViewModel extends ViewModel {
         return userPreferencesMutableLiveData;
     }
 
-    public User getLoggedUser() {
-        return userRepository.getLoggedUser();
-    }
-
+ */
     public MutableLiveData<Result> logout() {
         if (userMutableLiveData == null) {
             userMutableLiveData = userRepository.logout();
         } else {
             userRepository.logout();
         }
-
         return userMutableLiveData;
     }
 
+    public User getLoggedUser() {
+        return userRepository.getLoggedUser();
+    }
+
+
+/*
     private void getUserFavoriteNews(String idToken) {
         userFavoriteNewsMutableLiveData = userRepository.getUserFavoriteNews(idToken);
     }
+
+ */
 
     public void getUser(String email, String password, boolean isUserRegistered) {
         userRepository.getUser(email, password, isUserRegistered);
@@ -98,4 +102,3 @@ public class UserViewModel extends ViewModel {
 }
 
 
- */

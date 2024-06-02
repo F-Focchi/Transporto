@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.firebase.database.Exclude;
 
-public class User implements Parcelable {
+public class User  {//implements Parcelable
     private String name;
     private String email;
     private String idToken;
@@ -49,7 +49,7 @@ public class User implements Parcelable {
                 ", idToken='" + idToken + '\'' +
                 '}';
     }
-
+/*
     @Override
     public int describeContents() {
         return 0;
@@ -74,6 +74,8 @@ public class User implements Parcelable {
         this.idToken = in.readString();
     }
 
+
+
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
         public User createFromParcel(Parcel source) {
@@ -85,4 +87,6 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
+
+ */
 }

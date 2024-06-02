@@ -6,7 +6,11 @@ import android.app.Application;
 
 //import com.example.airquality.data.repository.user.IUserRepository;
 //import com.example.airquality.data.repository.user.UserRepository;
+import com.example.airquality.data.repository.user.IUserRepository;
+import com.example.airquality.data.repository.user.UserRepository;
 import com.example.airquality.data.service.AqiApiService;
+import com.example.airquality.data.source.user.BaseUserAuthenticationRemoteDataSource;
+import com.example.airquality.data.source.user.UserAuthenticationRemoteDataSource;
 //import com.example.airquality.data.source.user.BaseUserAuthenticationRemoteDataSource;
 //import com.example.airquality.data.source.user.BaseUserDataRemoteDataSource;
 //import com.example.airquality.data.source.user.UserAuthenticationRemoteDataSource;
@@ -46,26 +50,26 @@ import retrofit2.converter.gson.GsonConverterFactory;
                     .build();
             return retrofit.create(AqiApiService.class);
         }
-/*
+
         public IUserRepository getUserRepository(Application application) {
-            SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil(application);
+            //SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil(application);
 
             BaseUserAuthenticationRemoteDataSource userRemoteAuthenticationDataSource =
                     new UserAuthenticationRemoteDataSource();
 
-            BaseUserDataRemoteDataSource userDataRemoteDataSource =
-                    new UserDataRemoteDataSource(sharedPreferencesUtil);
+          //  BaseUserDataRemoteDataSource userDataRemoteDataSource =
+           //         new UserDataRemoteDataSource(sharedPreferencesUtil);
 
            // DataEncryptionUtil dataEncryptionUtil = new DataEncryptionUtil(application);
 
-           BaseNewsLocalDataSource newsLocalDataSource =
-                    new NewsLocalDataSource(getNewsDao(application), sharedPreferencesUtil,
-                            dataEncryptionUtil);
+          // BaseNewsLocalDataSource newsLocalDataSource =
+           //         new NewsLocalDataSource(getNewsDao(application), sharedPreferencesUtil,
+           //                 dataEncryptionUtil);
 
 
 
-            return new UserRepository(userRemoteAuthenticationDataSource,
-                    userDataRemoteDataSource, newsLocalDataSource);
+            return new UserRepository(userRemoteAuthenticationDataSource);
+            //userDataRemoteDataSource, newsLocalDataSource
         }
-        */
+
 }

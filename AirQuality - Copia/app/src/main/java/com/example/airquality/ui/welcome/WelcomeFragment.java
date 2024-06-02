@@ -1,6 +1,6 @@
 package com.example.airquality.ui.welcome;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,7 +30,6 @@ public class WelcomeFragment extends Fragment {
      *
      * @return A new instance of fragment WelcomeFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static WelcomeFragment newInstance() {
 
         return new WelcomeFragment();
@@ -54,19 +53,9 @@ public class WelcomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         final Button signUpButton = view.findViewById(R.id.button);
-        //final Button signInButton = view.findViewById(R.id.button2);
 
-        signUpButton.setOnClickListener(item -> {
 
-            Navigation.findNavController(item).navigate(R.id.action_welcomeFragment_to_signInFragment);
-        });
-/*
-        signInButton.setOnClickListener(item -> {
+        signUpButton.setOnClickListener(item -> Navigation.findNavController(item).navigate(R.id.action_welcomeFragment_to_signInFragment));
 
-            startActivity(new Intent(WelcomeActivity.this, SignUpActivity.class));
-            finish();
-        });
-
- */
     }
 }

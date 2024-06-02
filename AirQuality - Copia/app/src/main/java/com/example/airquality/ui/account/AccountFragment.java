@@ -2,30 +2,34 @@ package com.example.airquality.ui.account;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.airquality.R;
+import com.example.airquality.data.repository.user.IUserRepository;
+import com.example.airquality.ui.welcome.UserViewModel;
+import com.example.airquality.ui.welcome.UserViewModelFactory;
+import com.example.airquality.util.ServiceLocator;
+import com.google.android.material.snackbar.Snackbar;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AccountFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class AccountFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    private static final String TAG = AccountFragment.class.getSimpleName();
+    //private FragmentSettingsBinding fragmentSettingsBinding;
+    private UserViewModel userViewModel;
     public AccountFragment() {
         // Required empty public constructor
     }
@@ -34,27 +38,24 @@ public class AccountFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
+
      * @return A new instance of fragment AccountFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public AccountFragment newInstance(String param1, String param2) {
-        AccountFragment fragment = new AccountFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+
+    public static AccountFragment newInstance() {
+
+        return new AccountFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        IUserRepository userRepository = ServiceLocator.getInstance().
+                getUserRepository(requireActivity().getApplication());
+        userViewModel = new ViewModelProvider(
+                requireActivity(),
+                new UserViewModelFactory(userRepository)).get(UserViewModel.class);
     }
 
     @Override
@@ -63,4 +64,45 @@ public class AccountFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_account, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button logoutButton = view.findViewById(R.id.logout_button);
+        requireActivity().addMenuProvider(new MenuProvider() {
+            @Override
+            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+                menu.clear();
+            }
+
+            @Override
+            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+                return false;
+            }
+        });
+
+        logoutButton.setOnClickListener(v -> {
+            userViewModel.logout().observe(getViewLifecycleOwner(), result -> {
+                if (result.isSuccess()) {
+                    Navigation.findNavController(view).navigate(
+                            R.id.action_accountFragment_to_welcomeActivity);
+                } else {
+                    Snackbar.make(view,
+                            requireActivity().getString(R.string.unexpected_error),
+                            Snackbar.LENGTH_SHORT).show();
+                }
+            });
+        });
+
+
+    }
+    /*
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        fragmentSettingsBinding = null;
+    }
+
+     */
 }

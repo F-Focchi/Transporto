@@ -1,46 +1,46 @@
 package com.example.airquality.data.repository.user;
-/*
+
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 import java.util.Set;
 
-import com.example.airquality.model.News;
-import com.example.airquality.model.NewsApiResponse;
+//import com.example.airquality.model.News;
+//import com.example.airquality.model.NewsApiResponse;
 import com.example.airquality.model.Result;
 import com.example.airquality.model.User;
-import com.example.airquality.data.source.news.BaseNewsLocalDataSource;
-import com.example.airquality.data.source.news.NewsCallback;
+//import com.example.airquality.data.source.news.BaseNewsLocalDataSource;
+//import com.example.airquality.data.source.news.NewsCallback;
 import com.example.airquality.data.source.user.BaseUserAuthenticationRemoteDataSource;
-import com.example.airquality.data.source.user.BaseUserDataRemoteDataSource;
+//import com.example.airquality.data.source.user.BaseUserDataRemoteDataSource;
 
 
 
 // Repository class to get the user information.
 
-public class UserRepository implements IUserRepository, UserResponseCallback, NewsCallback {
+public class UserRepository implements IUserRepository, UserResponseCallback {//, NewsCallback
 
     private static final String TAG = UserRepository.class.getSimpleName();
 
     private final BaseUserAuthenticationRemoteDataSource userRemoteDataSource;
-    private final BaseUserDataRemoteDataSource userDataRemoteDataSource;
-    private final BaseNewsLocalDataSource newsLocalDataSource;
+    //private final BaseUserDataRemoteDataSource userDataRemoteDataSource;
+    //private final BaseNewsLocalDataSource newsLocalDataSource;
     private final MutableLiveData<Result> userMutableLiveData;
-    private final MutableLiveData<Result> userFavoriteNewsMutableLiveData;
-    private final MutableLiveData<Result> userPreferencesMutableLiveData;
+    //private final MutableLiveData<Result> userFavoriteNewsMutableLiveData;
+    //private final MutableLiveData<Result> userPreferencesMutableLiveData;
 
-    public UserRepository(BaseUserAuthenticationRemoteDataSource userRemoteDataSource,
-                          BaseUserDataRemoteDataSource userDataRemoteDataSource,
-                          BaseNewsLocalDataSource newsLocalDataSource) {
+    public UserRepository(BaseUserAuthenticationRemoteDataSource userRemoteDataSource) {
+                         // BaseUserDataRemoteDataSource userDataRemoteDataSource,
+                         // BaseNewsLocalDataSource newsLocalDataSource
         this.userRemoteDataSource = userRemoteDataSource;
-        this.userDataRemoteDataSource = userDataRemoteDataSource;
-        this.newsLocalDataSource = newsLocalDataSource;
+        //this.userDataRemoteDataSource = userDataRemoteDataSource;
+        //this.newsLocalDataSource = newsLocalDataSource;
         this.userMutableLiveData = new MutableLiveData<>();
-        this.userPreferencesMutableLiveData = new MutableLiveData<>();
-        this.userFavoriteNewsMutableLiveData = new MutableLiveData<>();
+        //this.userPreferencesMutableLiveData = new MutableLiveData<>();
+        //this.userFavoriteNewsMutableLiveData = new MutableLiveData<>();
         this.userRemoteDataSource.setUserResponseCallback(this);
-        this.userDataRemoteDataSource.setUserResponseCallback(this);
-        this.newsLocalDataSource.setNewsCallback(this);
+        //this.userDataRemoteDataSource.setUserResponseCallback(this);
+        //this.newsLocalDataSource.setNewsCallback(this);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class UserRepository implements IUserRepository, UserResponseCallback, Ne
         signInWithGoogle(idToken);
         return userMutableLiveData;
     }
-
+/*
     @Override
     public MutableLiveData<Result> getUserFavoriteNews(String idToken) {
         userDataRemoteDataSource.getUserFavoriteNews(idToken);
@@ -70,6 +70,8 @@ public class UserRepository implements IUserRepository, UserResponseCallback, Ne
         userDataRemoteDataSource.getUserPreferences(idToken);
         return userPreferencesMutableLiveData;
     }
+
+ */
 
     @Override
     public User getLoggedUser() {
@@ -96,17 +98,21 @@ public class UserRepository implements IUserRepository, UserResponseCallback, Ne
     public void signInWithGoogle(String token) {
         userRemoteDataSource.signInWithGoogle(token);
     }
-
+/*
     @Override
     public void saveUserPreferences(String favoriteCountry, Set<String> favoriteTopics, String idToken) {
         userDataRemoteDataSource.saveUserPreferences(favoriteCountry, favoriteTopics, idToken);
     }
 
+ */
+
     @Override
     public void onSuccessFromAuthentication(User user) {
+        /*
         if (user != null) {
             userDataRemoteDataSource.saveUserData(user);
         }
+         */
     }
 
     @Override
@@ -115,6 +121,11 @@ public class UserRepository implements IUserRepository, UserResponseCallback, Ne
         userMutableLiveData.postValue(result);
     }
 
+    @Override
+    public void onSuccessLogout() {
+
+    }
+/*
     @Override
     public void onSuccessFromRemoteDatabase(User user) {
         Result.UserResponseSuccess result = new Result.UserResponseSuccess(user);
@@ -164,6 +175,8 @@ public class UserRepository implements IUserRepository, UserResponseCallback, Ne
 
     }
 
+
+
     @Override
     public void onFailureFromRemote(Exception exception) {
 
@@ -203,6 +216,8 @@ public class UserRepository implements IUserRepository, UserResponseCallback, Ne
     public void onFailureFromCloud(Exception exception) {
 
     }
-}
 
  */
+}
+
+

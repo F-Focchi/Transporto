@@ -155,24 +155,7 @@
                 android:background="@color/purple_black" />
         </RelativeLayout>
 
-        <Button
-            android:id="@+id/google_signup_button"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/google_sign_up"
-            android:textColor="@color/purple_black"
-            android:textSize="14sp"
-            app:backgroundTint="@color/white"
-            app:icon="@drawable/googleg_standard_color_18"
-            app:iconGravity="textStart"
-            app:iconTint="@null"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relative_layout" />
+
 
         <TextView
             android:id="@+id/textView7"
@@ -187,7 +170,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/google_signup_button" />
+            app:layout_constraintTop_toBottomOf="@+id/relative_layout" />
 
         <Button
             android:id="@+id/sign_in_redirect_button"

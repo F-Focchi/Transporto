@@ -69,6 +69,8 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.1.1")
     //implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
+    implementation("commons-validator:commons-validator:1.7")
+
 
 }
 
