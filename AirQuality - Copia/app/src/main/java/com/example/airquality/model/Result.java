@@ -8,7 +8,7 @@ public abstract class Result {
     private Result() {}
 
     public boolean isSuccess() {
-        if ( this instanceof UserResponseSuccess) {//this instanceof NewsResponseSuccess ||
+        if ( this instanceof UserResponseSuccess|| this instanceof LogoutSuccess) {//this instanceof NewsResponseSuccess ||
             return true;
         } else {
             return false;
@@ -31,6 +31,8 @@ public abstract class Result {
     }
 
  */
+    public static final class LogoutSuccess extends Result {
+    }
 
 
 

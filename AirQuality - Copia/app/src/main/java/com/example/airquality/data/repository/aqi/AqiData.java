@@ -10,6 +10,7 @@ public class AqiData {
     public static void setAqiData(AirQualityData airQualityData) {
         AqiInfo setInfo = new AqiInfo();
         setInfo.setCity(Global.getCity());
+        setInfo.setAqiInt(airQualityData.getList().get(0).getMain().getAqi());
         setInfo.setAqi(Support.setAqiToString(airQualityData.getList().get(0).getMain().getAqi()));
         setInfo.setDescription(Support.setDescriptionToString(airQualityData.getList().get(0).getMain().getAqi()));
         setInfo.setCo(airQualityData.getList().get(0).getComponents().getCo());

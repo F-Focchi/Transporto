@@ -1,5 +1,7 @@
 package com.example.airquality.ui.welcome;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -23,9 +25,9 @@ public class UserViewModel extends ViewModel {
         authenticationError = false;
     }
 
-    public MutableLiveData<Result> getUserMutableLiveData(
-            String email, String password, boolean isUserRegistered) {
+    public MutableLiveData<Result> getUserMutableLiveData(String email, String password, boolean isUserRegistered) {
         if (userMutableLiveData == null) {
+            userMutableLiveData = new MutableLiveData<>();
             getUserData(email, password, isUserRegistered);
         }
         return userMutableLiveData;
@@ -59,14 +61,16 @@ public class UserViewModel extends ViewModel {
     }
 
  */
-    public MutableLiveData<Result> logout() {
-        if (userMutableLiveData == null) {
-            userMutableLiveData = userRepository.logout();
-        } else {
-            userRepository.logout();
-        }
-        return userMutableLiveData;
+public MutableLiveData<Result> logout() {
+    if (userMutableLiveData == null) {
+        Log.d(TAG, "logout:1 ");
+        userMutableLiveData = userRepository.logout();
+    } else {
+        Log.d(TAG, "logout:2 ");
+        userMutableLiveData.setValue(userRepository.logout().getValue());
     }
+    return userMutableLiveData;
+}
 
     public User getLoggedUser() {
         return userRepository.getLoggedUser();

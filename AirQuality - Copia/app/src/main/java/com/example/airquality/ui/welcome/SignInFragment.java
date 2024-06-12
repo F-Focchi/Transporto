@@ -90,7 +90,9 @@ public class SignInFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //auth = FirebaseAuth.getInstance();
+
+        auth = FirebaseAuth.getInstance();
+
         Log.d(TAG, "onCreate called");
 
         IUserRepository userRepository = ServiceLocator.getInstance().
@@ -234,13 +236,14 @@ public class SignInFragment extends Fragment {
                     //progressIndicator.setVisibility(View.VISIBLE);
                     userViewModel.getUserMutableLiveData(email, password, true).observe(
                             getViewLifecycleOwner(), result -> {
+                                Log.d(TAG, "Observer is activated");
                                 if (result.isSuccess()) {
                                     Log.d(TAG, "User login success");
                                     //User user = ((Result.UserResponseSuccess) result).getData();
                                     //saveLoginData(email, password, user.getIdToken());
                                     userViewModel.setAuthenticationError(false);
                                     //retrieveUserInformationAndStartActivity(user, R.id.navigate_to_newsPreferencesActivity);
-                                    Navigation.findNavController(v).navigate(R.id.action_signInFragment_to_mainActivity);
+                                    Navigation.findNavController(view).navigate(R.id.action_signInFragment_to_mainActivity);
                                 } else {
                                     Log.e(TAG, "User login failed: " + ((Result.Error) result).getMessage());
                                     userViewModel.setAuthenticationError(true);
@@ -286,10 +289,10 @@ public class SignInFragment extends Fragment {
 
         signupRedirectText.setOnClickListener(v -> {
             Log.d(TAG, "Redirecting to sign-up");
-            Navigation.findNavController(v).navigate(R.id.action_signInFragment_to_signUpFragment);
+            Navigation.findNavController(view).navigate(R.id.action_signInFragment_to_signUpFragment);
         });
 
-/*
+
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -319,6 +322,7 @@ public class SignInFragment extends Fragment {
                         });
                     }
                 });
+
                 dialogView.findViewById(R.id.back_button).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -332,7 +336,6 @@ public class SignInFragment extends Fragment {
             }
         });
 
- */
 
 
     }
@@ -381,9 +384,11 @@ public class SignInFragment extends Fragment {
     private boolean isEmailOk(String email) {
         if (!EmailValidator.getInstance().isValid((email))) {
             signInEmail.setError(getString(R.string.error_email));
+            Log.d(TAG, "Email not OK");
             return false;
         } else {
             signInEmail.setError(null);
+            Log.d(TAG, "Email OK");
             return true;
         }
     }
@@ -397,9 +402,11 @@ public class SignInFragment extends Fragment {
         // Check if the password length is correct
         if (password.isEmpty()) {
             signInPassword.setError(getString(R.string.error_password));
+            Log.d(TAG, "Password not OK");
             return false;
         } else {
             signInPassword.setError(null);
+            Log.d(TAG, "Password OK");
             return true;
         }
     }

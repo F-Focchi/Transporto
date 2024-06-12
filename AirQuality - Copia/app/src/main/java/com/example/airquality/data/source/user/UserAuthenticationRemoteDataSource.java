@@ -63,16 +63,15 @@ public class UserAuthenticationRemoteDataSource extends BaseUserAuthenticationRe
     @Override
     public void signUp(String email, String password) {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {/*
+            if (task.isSuccessful()) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                 if (firebaseUser != null) {
                     userResponseCallback.onSuccessFromAuthentication(
                             new User(firebaseUser.getDisplayName(), email, firebaseUser.getUid())
                     );
-                } else { //userResponseCallback.onFailureFromAuthentication(getErrorMessage(task.getException()));
-                 }
-               */
+                } else {
                     userResponseCallback.onFailureFromAuthentication(getErrorMessage(task.getException()));
+                 }
 
             } else {
                 userResponseCallback.onFailureFromAuthentication(getErrorMessage(task.getException()));
@@ -83,8 +82,9 @@ public class UserAuthenticationRemoteDataSource extends BaseUserAuthenticationRe
     @Override
     public void signIn(String email, String password) {
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {/*
+            if (task.isSuccessful()) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
                 if (firebaseUser != null) {
                     userResponseCallback.onSuccessFromAuthentication(
                             new User(firebaseUser.getDisplayName(), email, firebaseUser.getUid())
@@ -92,8 +92,7 @@ public class UserAuthenticationRemoteDataSource extends BaseUserAuthenticationRe
                 } else {
                     userResponseCallback.onFailureFromAuthentication(getErrorMessage(task.getException()));
                 }
-                */
-                userResponseCallback.onFailureFromAuthentication(getErrorMessage(task.getException()));
+
             } else {
                 userResponseCallback.onFailureFromAuthentication(getErrorMessage(task.getException()));
             }
@@ -109,7 +108,7 @@ public class UserAuthenticationRemoteDataSource extends BaseUserAuthenticationRe
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success");
-                    /*
+
                     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                     if (firebaseUser != null) {
                         userResponseCallback.onSuccessFromAuthentication(
@@ -123,9 +122,6 @@ public class UserAuthenticationRemoteDataSource extends BaseUserAuthenticationRe
                                 getErrorMessage(task.getException()));
                     }
 
-                     */
-                    userResponseCallback.onFailureFromAuthentication(
-                            getErrorMessage(task.getException()));
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.getException());

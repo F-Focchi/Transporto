@@ -44,32 +44,35 @@ dependencies {
     implementation(libs.play.services.location)
     implementation(libs.places)
 
-    val nav_version = "2.7.5"
-    implementation ("androidx.navigation:navigation-fragment:$nav_version")
-    implementation ("androidx.navigation:navigation-ui:$nav_version")
+
+    implementation (libs.navigation.fragment)
+    implementation (libs.navigation.ui)
 
 
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.database)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation("com.airbnb.android:lottie-compose:6.4.0")
-    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation(libs.lottie.compose)
 
-    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-database")
-    implementation("com.google.android.gms:play-services-auth:21.1.1")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.google.firebase.auth)
+    implementation(libs.google.firebase.database)
+    implementation(libs.play.services.auth)
     //implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
 
-    implementation("commons-validator:commons-validator:1.7")
+    implementation(libs.commons.validator)
+
+    //implementation (libs.work.runtime)
+    implementation ("androidx.work:work-runtime:2.7.1")
 
 
 }

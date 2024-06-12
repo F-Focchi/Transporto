@@ -7,6 +7,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +22,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AirQuality"
         tools:targetApi="31">
+
+        <service
+            android:name=".notification.AirQualityService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true" />
@@ -30,5 +41,7 @@
         </intent-filter>
         </activity>
     </application>
+
+
 
 </manifest>

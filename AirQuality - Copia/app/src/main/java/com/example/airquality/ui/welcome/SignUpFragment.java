@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,17 +96,22 @@ public class SignUpFragment extends Fragment {
             String password = Objects.requireNonNull(signupPassword.getEditText()).getText().toString().trim();
 
             if (isEmailOk(email) & isPasswordOk(password)) {
+                Log.d(TAG, "Email and password are OK");
                 //binding.progressBar.setVisibility(View.VISIBLE);
                 if (!userViewModel.isAuthenticationError()) {
+                    Log.d(TAG, "isAuthenticationError funziona");
                     userViewModel.getUserMutableLiveData(email, password, false).observe(
                             getViewLifecycleOwner(), result -> {
+                                Log.d(TAG, "Observer is activated");
                                 if (result.isSuccess()) {
+                                    Log.d(TAG, "User Sign Up success: " + ((Result.UserResponseSuccess) result).getData());
                                     //User user = ((Result.UserResponseSuccess) result).getData();
                                     //saveLoginData(email, password, user.getIdToken());
                                     userViewModel.setAuthenticationError(false);
                                     Navigation.findNavController(item).navigate(
                                             R.id.action_signUpFragment_to_mainActivity);
                                 } else {
+                                    Log.d(TAG, "Sign Up Error: " + ((Result.Error) result).getMessage());
                                     userViewModel.setAuthenticationError(true);
                                     Snackbar.make(requireActivity().findViewById(android.R.id.content),
                                             getErrorMessage(((Result.Error) result).getMessage()),

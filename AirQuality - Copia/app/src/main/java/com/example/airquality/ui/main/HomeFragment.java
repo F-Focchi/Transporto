@@ -7,14 +7,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import androidx.fragment.app.Fragment;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.airquality.R;
 import com.example.airquality.data.repository.aqi.AqiData;
+import com.example.airquality.notification.AirQualityWorker;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class HomeFragment extends Fragment {
@@ -76,6 +84,46 @@ public class HomeFragment extends Fragment {
         setUI();
 
 
+        Button testButton = view.findViewById(R.id.test_button);
+        testButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OneTimeWorkRequest testRequest = new OneTimeWorkRequest.Builder(AirQualityWorker.class)
+                        .build();
+                WorkManager.getInstance(requireContext()).enqueue(testRequest);
+            }
+        });
+
+        Button delayedNotificationButton = view.findViewById(R.id.delayed_notification_button);
+        delayedNotificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scheduleDelayedNotification();
+            }
+        });
+
+
+
+    }
+
+    private void scheduleAirQualityCheck() {
+        PeriodicWorkRequest airQualityCheckRequest = new PeriodicWorkRequest.Builder(
+                AirQualityWorker.class, 15, TimeUnit.MINUTES)
+                .build();
+
+        WorkManager.getInstance(requireContext()).enqueue(airQualityCheckRequest);
+    }
+
+    private void scheduleDelayedNotification() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                OneTimeWorkRequest testRequest = new OneTimeWorkRequest.Builder(AirQualityWorker.class)
+                        .build();
+                WorkManager.getInstance(requireContext()).enqueue(testRequest);
+            }
+        }, 30000); // Ritardo di 30 secondi
     }
 
     private void setUI(){
@@ -99,10 +147,9 @@ public class HomeFragment extends Fragment {
 
     }
 
-    void setCityName(String cityNameValue) {
+     void setCityName(String cityNameValue) {
         city.setText(cityNameValue);
     }
-
      void setAqiValue(String aqiValue) {
         aqi.setText(aqiValue);
     }

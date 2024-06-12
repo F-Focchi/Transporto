@@ -4,6 +4,7 @@ package com.example.airquality.data.repository.aqi;
 public class AqiInfo {
 
     private  String city;
+    private int aqiInt;
     private  String aqi;
     private String description;
     private  String co;
@@ -19,6 +20,14 @@ public class AqiInfo {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public int getAqiInt() {
+        return aqiInt;
+    }
+
+    public void setAqiInt(int aqiInt) {
+        this.aqiInt = aqiInt;
     }
 
     public String getAqi() {

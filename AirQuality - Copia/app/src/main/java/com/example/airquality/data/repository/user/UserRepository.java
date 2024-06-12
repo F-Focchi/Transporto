@@ -1,5 +1,7 @@
 package com.example.airquality.data.repository.user;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
@@ -80,6 +82,7 @@ public class UserRepository implements IUserRepository, UserResponseCallback {//
 
     @Override
     public MutableLiveData<Result> logout() {
+        Log.d(TAG, "logout:si ");
         userRemoteDataSource.logout();
         return userMutableLiveData;
     }
@@ -113,6 +116,8 @@ public class UserRepository implements IUserRepository, UserResponseCallback {//
             userDataRemoteDataSource.saveUserData(user);
         }
          */
+        Result.UserResponseSuccess result = new Result.UserResponseSuccess(user);
+        userMutableLiveData.postValue(result);
     }
 
     @Override
@@ -124,7 +129,12 @@ public class UserRepository implements IUserRepository, UserResponseCallback {//
     @Override
     public void onSuccessLogout() {
 
+        Result.LogoutSuccess result = new Result.LogoutSuccess();
+        userMutableLiveData.postValue(result);
+
+
     }
+
 /*
     @Override
     public void onSuccessFromRemoteDatabase(User user) {
