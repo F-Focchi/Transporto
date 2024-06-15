@@ -22,8 +22,8 @@
             android:id="@+id/action_signInFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
         <action
-            android:id="@+id/action_signInFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
+            android:id="@+id/action_signInFragment_to_waitActivity"
+            app:destination="@id/waitActivity" />
     </fragment>
 
     <fragment
@@ -31,17 +31,17 @@
         android:name="com.example.airquality.ui.welcome.SignUpFragment"
         tools:layout="@layout/fragment_sign_up">
         <action
-            android:id="@+id/action_signUpFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
+            android:id="@+id/action_signUpFragment_to_waitActivity"
+            app:destination="@id/waitActivity" />
         <action
             android:id="@+id/action_signUpFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
     </fragment>
 
     <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.airquality.ui.main.MainActivity"
-        tools:layout="@layout/activity_main">
+        android:id="@+id/waitActivity"
+        android:name="com.example.airquality.ui.main.WaitActivity"
+        tools:layout="@layout/activity_wait">
 
     </activity>
 

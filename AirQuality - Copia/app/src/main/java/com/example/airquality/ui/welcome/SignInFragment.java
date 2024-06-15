@@ -139,7 +139,7 @@ public class SignInFragment extends Fragment {
                                 userViewModel.setAuthenticationError(false);
                                 //retrieveUserInformationAndStartActivity(user, R.id.navigate_to_newsPreferencesActivity);
                                 startActivityBasedOnCondition(
-                                        R.id.action_signInFragment_to_mainActivity);
+                                        R.id.action_signInFragment_to_waitActivity);
                             } else {
                                 Log.e(TAG, "Authentication failed: " + ((Result.Error) authenticationResult).getMessage());
                                 userViewModel.setAuthenticationError(true);
@@ -211,7 +211,7 @@ public class SignInFragment extends Fragment {
             }
             */
             startActivityBasedOnCondition(
-                    R.id.action_signInFragment_to_mainActivity);
+                    R.id.action_signInFragment_to_waitActivity);
         }
 
         signInEmail = view.findViewById(R.id.sign_in_email);
@@ -243,7 +243,7 @@ public class SignInFragment extends Fragment {
                                     //saveLoginData(email, password, user.getIdToken());
                                     userViewModel.setAuthenticationError(false);
                                     //retrieveUserInformationAndStartActivity(user, R.id.navigate_to_newsPreferencesActivity);
-                                    Navigation.findNavController(view).navigate(R.id.action_signInFragment_to_mainActivity);
+                                    Navigation.findNavController(view).navigate(R.id.action_signInFragment_to_waitActivity);
                                 } else {
                                     Log.e(TAG, "User login failed: " + ((Result.Error) result).getMessage());
                                     userViewModel.setAuthenticationError(true);

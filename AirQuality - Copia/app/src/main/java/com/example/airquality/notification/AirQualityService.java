@@ -27,7 +27,7 @@ public class AirQualityService extends JobIntentService {
     private static final String TAG = AirQualityService.class.getSimpleName();
     private static final int JOB_ID = 1000;
     private static final String CHANNEL_ID = "air_quality_alerts";
-    private RequestQueue requestQueue;
+    //private RequestQueue requestQueue;
 
     public static void enqueueWork(Context context, Intent work) {
         enqueueWork(context, AirQualityService.class, JOB_ID, work);
@@ -36,7 +36,7 @@ public class AirQualityService extends JobIntentService {
     @Override
     public void onCreate() {
         super.onCreate();
-        requestQueue = Volley.newRequestQueue(this);
+        //requestQueue = Volley.newRequestQueue(this);
         createNotificationChannel();
     }
 
@@ -47,10 +47,10 @@ public class AirQualityService extends JobIntentService {
     }
 
     private void checkAirQuality() {
-        int airQualityIndex = 4;
-        //int airQualityIndex = AqiData.getInfo().getAqiInt();
+        //int airQualityIndex = 4;
+        int airQualityIndex = AqiData.getInfo().getAqiInt();
         Log.d(TAG, "Current air quality index: " + airQualityIndex);
-        if (airQualityIndex > 3) {
+        if (airQualityIndex > 1) {
             sendNotification();
         }
     }

@@ -85,7 +85,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         Global.setLongitude(longitude);
                         Global.setLatitude(latitude);
                         setCityName(latitude, longitude);
-                        Caller.aqiApi(latitude,longitude, this);
+                        //Caller.aqiApi(latitude,longitude, this);
                     }
                 });
             } else {
@@ -122,7 +122,7 @@ public class WelcomeActivity extends AppCompatActivity {
             Global.setLongitude(longitude);
             Global.setLatitude(latitude);
             setCityName(latitude, longitude);
-            Caller.aqiApi(latitude,longitude,WelcomeActivity.this);
+            //Caller.aqiApi(latitude,longitude,WelcomeActivity.this);
         }
     };
 

@@ -2,6 +2,7 @@ package com.example.airquality.util;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import com.example.airquality.data.repository.aqi.AqiData;
 import com.example.airquality.data.service.AqiApiService;
 import com.example.airquality.model.AirQualityData;
+import com.example.airquality.ui.main.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +27,8 @@ public class Caller {
                 if (response.body() != null && response.isSuccessful()) {
                     AirQualityData airQualityData = response.body();
                     AqiData.setAqiData(airQualityData);
+                    Intent intent = new Intent(context, MainActivity.class);
+                    context.startActivity(intent);
                 } else {
                     showErrorToast(context);
                 }

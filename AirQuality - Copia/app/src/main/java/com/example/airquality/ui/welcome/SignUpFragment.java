@@ -109,7 +109,7 @@ public class SignUpFragment extends Fragment {
                                     //saveLoginData(email, password, user.getIdToken());
                                     userViewModel.setAuthenticationError(false);
                                     Navigation.findNavController(item).navigate(
-                                            R.id.action_signUpFragment_to_mainActivity);
+                                            R.id.action_signUpFragment_to_waitActivity);
                                 } else {
                                     Log.d(TAG, "Sign Up Error: " + ((Result.Error) result).getMessage());
                                     userViewModel.setAuthenticationError(true);
