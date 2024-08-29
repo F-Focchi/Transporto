@@ -175,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-
     private void scheduleAirQualityCheck() {
         PeriodicWorkRequest airQualityCheckRequest = new PeriodicWorkRequest.Builder(
                 AirQualityWorker.class, 15, TimeUnit.MINUTES)
@@ -219,15 +218,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void setCityName(String cityNameValue) {
-        city.setText(cityNameValue);
-    }
-    void setAqiValue(String aqiValue) {
-        aqi.setText(aqiValue);
-    }
-    void setDescriptionText(String descr) {
-        description.setText(descr);
-    }
+    void setCityName(String cityNameValue) {city.setText(cityNameValue);}
+    void setAqiValue(String aqiValue) {aqi.setText(aqiValue);}
+    void setDescriptionText(String descr) {description.setText(descr);}
     void setCoValue(String coValue) {co.setText(coValue);}
     void setNo2Value(String no2Value) {no2.setText(no2Value);}
     void setO3Value(String o3Value) {o3.setText(o3Value);}

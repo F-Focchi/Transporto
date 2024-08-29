@@ -138,8 +138,7 @@ public class SignInFragment extends Fragment {
                                 //saveLoginData(user.getEmail(), null, user.getIdToken());
                                 userViewModel.setAuthenticationError(false);
                                 //retrieveUserInformationAndStartActivity(user, R.id.navigate_to_newsPreferencesActivity);
-                                startActivityBasedOnCondition(
-                                        R.id.action_signInFragment_to_waitActivity);
+                                startActivityBasedOnCondition(R.id.action_signInFragment_to_waitActivity);
                             } else {
                                 Log.e(TAG, "Authentication failed: " + ((Result.Error) authenticationResult).getMessage());
                                 userViewModel.setAuthenticationError(true);

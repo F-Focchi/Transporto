@@ -22,9 +22,7 @@ public class Global {
     public static String getAqiApiKey() {
         return aqiApiKey;
     }
-    public static String getSearchApiKey() {
-        return searchApiKey;
-    }
+    public static String getSearchApiKey() {return searchApiKey;}
     public static double getLatitude() {
         return latitude;
     }
